@@ -20,7 +20,7 @@ def index():
 
 @app.route('/show_recipes')
 def show_recipes():
-    return render_template('show_recipes.html')
+    return render_template('recipes.html')
 
 @app.route('/meal_planner')
 def meal_planner():
