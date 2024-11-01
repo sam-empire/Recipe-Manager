@@ -3,7 +3,6 @@ from flask_session import Session
 import os
 
 from recipes import recipe_bp
-
 app = Flask(__name__)
 
 # Register blueprints
@@ -11,8 +10,6 @@ app.register_blueprint(recipe_bp, url_prefix='/recipe')
 
 # Basic configuration
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_secret_key')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Disable tracking for performance
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DEV_DATABASE_URL', 'sqlite:///dev_db.sqlite3')
 
 # Configure session
 app.config["SESSION_PERMANENT"] = False

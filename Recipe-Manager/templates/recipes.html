@@ -3,9 +3,17 @@
 {% block title %}Recipes | Recipe Manager{% endblock %}
 
 {% block content %}
-    <section class = "R-1">
+    <section class="R-1">
         <h2>Recipes</h2>
-        <p><i>Search for your recipes here</i></p>
+        <p><i>Select a category to view recipes:</i></p>
+
+        <!-- Category Buttons -->
+        <div class="categories">
+            <a href="{{ url_for('recipe.show_recipes', category='breakfast') }}" class="btn btn-primary">Breakfast</a>
+            <a href="{{ url_for('recipe.show_recipes', category='lunch') }}" class="btn btn-primary">Lunch</a>
+            <a href="{{ url_for('recipe.show_recipes', category='dinner') }}" class="btn btn-primary">Dinner</a>
+            <!-- Add more categories as needed -->
+        </div>
     </section>
 
     <section class = "Recipe">
