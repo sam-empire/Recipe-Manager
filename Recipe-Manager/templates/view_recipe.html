@@ -1,0 +1,24 @@
+{% extends "Layout.html" %}
+
+{% block title %}Recipes | Recipe Manager{% endblock %}
+
+{% block content %}
+    <section class="Recipe">
+            <div class="recipe">
+                <h3>{{ recipe.title }}</h3>
+                <img src="{{ url_for('static', filename='uploads/' + recipe.image_url) }}" alt="{{ recipe.title }}" width="200">
+                <p>{{ recipe.instructions }}</p>
+                <p><strong>Category:</strong> {{ recipe.category }}</p>
+                
+                <!-- Display ingredients list -->
+                <h3>Ingredients</h3>
+                <ul>
+                    {% for ingredient in recipe.ingredients.split(',') %}
+                        <li>{{ ingredient.strip() }}</li>
+                    {% endfor %}
+                </ul>
+                <a href="{{ url_for('recipe.edit_recipe', id=recipe.id)}}">Edit</a>
+                <a href="{{ url_for('recipe.delete_recipe', id=recipe.id)}}">Delete</a>
+            </div>
+    </section>
+{% endblock %}

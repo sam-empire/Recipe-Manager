@@ -4,31 +4,30 @@
 
 {% block content %}
     <section class="R-1">
-        <h2>Recipes</h2>
-        <p><i>Select a category to view recipes:</i></p>
-
-        <!-- Category Buttons -->
-        <div class="categories">
-            <a href="{{ url_for('recipe.show_recipes', category='breakfast') }}" class="btn btn-primary">Breakfast</a>
-            <a href="{{ url_for('recipe.show_recipes', category='lunch') }}" class="btn btn-primary">Lunch</a>
-            <a href="{{ url_for('recipe.show_recipes', category='dinner') }}" class="btn btn-primary">Dinner</a>
-            <!-- Add more categories as needed -->
+        <div class="search-add-container">
+            <a href="{{ url_for('recipe.add_recipes') }}" class="btn btn-add-recipe">Add Recipe</a>
+            <form class="search-form" action="{{ url_for('recipe.show_recipes') }}" method="GET">
+                <input type="text" name="category" placeholder="Search by category...">
+                <button type="submit">Search</button>
+            </form>
         </div>
+        
+    </div>
     </section>
 
-    <section class = "Recipe">
-        <div class="recipe">
-            <h3>Recipe 1</h3>
-            <p>Browse a variety of recipes across different categories, from breakfast to dinner.</p>
-        </div>
-        <div class="recipe">
-            <h3>Recipe 2</h3>
-            <p>Mark recipes as favorites and keep them handy for quick access anytime.</p>
-        </div>
-        <div class="recipe">
-            <h3>Recipe 3</h3>
-            <p>Use our meal planner to organize your meals for the week using your favorite recipes.</p>
-        </div>
+    <section class="Recipe">
+        <!-- Loop through the recipes passed from the Flask route -->
+        {% for recipe in recipes %}
+            <div class="recipe">
+                <h3>{{ recipe.title }}</h3>
+                <img src="{{ url_for('static', filename='uploads/' + recipe.image_url) }}" alt="{{ recipe.title }}" width="200">
+                <a href="{{ url_for('recipe.view_recipe', id=recipe.id)}}">View recipe</a>
+                <a href="{{ url_for('recipe.edit_recipe', id=recipe.id)}}">Edit</a>
+                <a href="{{ url_for('recipe.delete_recipe', id=recipe.id)}}">Delete</a>
+            </div>
+            {% else %}
+            <p>No recipes found.</p>
+        {% endfor %}
     </section>
 
 {% endblock %}

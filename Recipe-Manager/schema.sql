@@ -3,5 +3,6 @@ CREATE TABLE IF NOT EXISTS recipes (
     title TEXT NOT NULL,
     instructions TEXT NOT NULL,
     ingredients TEXT NOT NULL,
-    image_url TEXT
+    image_url TEXT,
+    category TEXT
 );
