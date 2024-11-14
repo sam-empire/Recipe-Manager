@@ -3,24 +3,18 @@
 {% block title %}Home | Recipe Manager{% endblock %}
 
 {% block content %}
-    <section class = "favorite">
-        <h2>My Favourites</h2>
-        <p>Save your favorite recipe here</p>
-    </section>
-
-    <section class = "favorite">
+<section class="Recipe">
+    <!-- Loop through the recipes passed from the Flask route -->
+    {% for recipe in recipes %}
         <div class="recipe">
-            <h3>Recipe 1</h3>
-            <p>Browse a variety of recipes across different categories, from breakfast to dinner.</p>
+            <h3>{{ recipe.title }}</h3>
+            <img src="{{ url_for('static', filename='uploads/' + recipe.image_url) }}" alt="{{ recipe.title }}" width="200">
+            <a href="{{ url_for('recipe.view_recipe', id=recipe.id)}}">View recipe</a>
+            <a href="{{ url_for('recipe.edit_recipe', id=recipe.id)}}">Edit</a>
+            <a href="{{ url_for('recipe.delete_recipe', id=recipe.id)}}">Delete</a>
         </div>
-        <div class="recipe">
-            <h3>Recipe 2</h3>
-            <p>Mark recipes as favorites and keep them handy for quick access anytime.</p>
-        </div>
-        <div class="recipe">
-            <h3>Recipe 3</h3>
-            <p>Use our meal planner to organize your meals for the week using your favorite recipes.</p>
-        </div>
-    </section>
-
+        {% else %}
+        <p>No recipes found.</p>
+    {% endfor %}
+</section>
 {% endblock %}
