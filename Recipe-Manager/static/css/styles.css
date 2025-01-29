@@ -14,8 +14,11 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    background-color: #1b293775;
-    color: #333333;
+    /* background-image: url(paper.gif); */
+    /* background-position: left top;
+    background-repeat: repeat; */
+    background-color: white;
+    color: #000000;
 }
 
 /* Header Styling */
@@ -183,7 +186,7 @@ footer {
 
 .search-add-container {
     display: flex;
-    justify-content: center; /* Center-aligns the entire container */
+    justify-content: center; 
     align-items: center;
     gap: 1em;
     margin-bottom: 1em;
@@ -233,19 +236,47 @@ footer {
     background-color: #492b0d;
 }
 
+/* Recipe Section Styling */
+#sideMenu {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar *//
+}
 
-  
+#sideMenu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
 
-/* Recipe List Styling */
+}
+
+#sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
 .Recipe {
     display: flex;
     flex-wrap: wrap;
-    justify-content: left;
-    gap: 2em; /* Spacing between recipe items */
-    margin-top: 2em;
+    justify-content: center;
+    margin: 0, -5px;
 }
 
-.recipe {
+
+.recipe-card {
     background-color: #ffffff; /* White background for recipe cards */
     border: 1px solid #e0e0e0; /* Light border */
     border-radius: 8px;
@@ -253,28 +284,89 @@ footer {
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for recipe cards */
     transition: transform 0.2s ease;
-    width: 250px; /* Fixed width for recipe cards */
+    width: 100%; /* Fixed width for recipe cards */
 }
 
 .recipe:hover {
     transform: scale(1.05); /* Scale effect on hover */
 }
 
-.recipe img {
+.recipe-card img {
     border-radius: 5px; /* Rounded corners for images */
     max-width: 100%; /* Responsive image */
     height: auto;
 }
 
+.recipe {
+    width: 20%;
+    margin: 1em;
+    text-align: center;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.382);
+}
 .recipe a {
     display: block;
     margin: 0.5em 0;
-    color: #29323d; /* Link color */
+    color: #29323d; 
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .recipe a:hover {
-    color: #946846; /* Darker color on hover */
+    color: #242424; 
+}
+
+.recipe img {
+    height: auto;
+    width: 100%;
+}
+
+.searchContainer {
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchBar {
+    background-color: rgba(255, 255, 255, 0.291);
+    line-height: 2;
+    width: 80%;
+    border: none;
+    padding: 4px;
+    font-size: 13px;
+    float: right;
+}
+
+.searchBar text {
+    color: black;
+}
+
+#recipeNav {
+    background-color: #1a1a1a;
+    color: #dedede;
+}
+.addBtn {
+    background-color: #000000;
+    border: none;
+    color: white;
+    padding: 0.08em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 26px;
+    float: right;
+    cursor: pointer;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.favBtn {
+    background-color: #000000;
+    border: none;
+    color: white;
+    padding: 0.08em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 26px;
+    float: right;
+    cursor: pointer;
+    border-radius: 0px 10px 10px 0px;
 }

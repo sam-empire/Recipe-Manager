@@ -4,9 +4,10 @@
 
 {% block content %}
     <section class="Recipe">
-            <div class="recipe">
+            <div class="recipe-card">
                 <h3>{{ recipe.title }}</h3>
                 <img src="{{ url_for('static', filename='uploads/' + recipe.image_url) }}" alt="{{ recipe.title }}" width="200">
+                
                 <p>{{ recipe.instructions }}</p>
                 <p><strong>Category:</strong> {{ recipe.category }}</p>
                 

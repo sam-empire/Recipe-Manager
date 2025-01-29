@@ -1,33 +1,47 @@
-{% extends "Layout.html" %}
-
-{% block title %}Recipes | Recipe Manager{% endblock %}
-
-{% block content %}
-    <section class="R-1">
-        <div class="search-add-container">
-            <a href="{{ url_for('recipe.add_recipes') }}" class="btn btn-add-recipe">Add Recipe</a>
-            <form class="search-form" action="{{ url_for('recipe.show_recipes') }}" method="GET">
-                <input type="text" name="category" placeholder="Search by category...">
-                <button type="submit">Search</button>
-            </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/app.js')}}"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <header id="recipeNav">
+        <a class="openbtn" onclick="openNav()">&#9751;</a>
+        <div class="searchContainer">
+            <a href="{{ url_for('recipe.add_recipes')}}" class="addBtn" >+</a> 
+            <input class = "searchBar" type="text" placeholder="Search.." name="search">
+            <a href="{{ url_for('show_favorites')}}" class="favBtn">&#9829;</a>
         </div>
-        
-    </div>
-    </section>
+        <h1>Recipes</h1>
+    </header>
+
+    <nav id="sideMenu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Home</a>
+        <a href="">Favorites</a>
+        <a href="">Contact</a>
+    </nav>
 
     <section class="Recipe">
-        <!-- Loop through the recipes passed from the Flask route -->
         {% for recipe in recipes %}
             <div class="recipe">
+                <img src="{{ url_for('static', filename='uploads/' + recipe.image_url) }}" alt="{{ recipe.title }}">
                 <h3>{{ recipe.title }}</h3>
-                <img src="{{ url_for('static', filename='uploads/' + recipe.image_url) }}" alt="{{ recipe.title }}" width="200">
+                <p>Category: {{ recipe.category }}</p>
                 <a href="{{ url_for('recipe.view_recipe', id=recipe.id)}}">View recipe</a>
                 <a href="{{ url_for('recipe.edit_recipe', id=recipe.id)}}">Edit</a>
-                <a href="{{ url_for('recipe.delete_recipe', id=recipe.id)}}">Delete</a>
             </div>
             {% else %}
             <p>No recipes found.</p>
         {% endfor %}
     </section>
 
-{% endblock %}
+    <footer>
+        <p>&copy; 2024 Recipe Manager. All Rights Reserved.</p>
+    </footer>    
+</body>
+</html>
