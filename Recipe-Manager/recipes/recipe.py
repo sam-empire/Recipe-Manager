@@ -6,7 +6,7 @@ from database import get_db_connection
 recipe_bp = Blueprint("recipe", __name__, template_folder="templates")
 
 # Allowed extensions
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 # Check if file extension is allowed
 def allowed_file(filename):

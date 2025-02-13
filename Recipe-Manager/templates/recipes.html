@@ -10,10 +10,12 @@
 <body>
     
     <header id="recipeNav">
-        <a class="openbtn" onclick="openNav()">&#9751;</a>
+        <a href="{{ url_for('index')}}" class="openbtn">&#9751;</a>
         <div class="searchContainer">
-            <a href="{{ url_for('recipe.add_recipes')}}" class="addBtn" >+</a> 
-            <input class = "searchBar" type="text" placeholder="Search.." name="search">
+            <a href="{{ url_for('recipe.add_recipes')}}" class="addBtn" onmouseover="showPopup()">+</a>
+            <form id="Fsb" action= "{{ url_for('recipe.show_recipes')}}">
+                <input class= "searchBar" type="text" placeholder="Search.." name="search">
+            </form>
             <a href="{{ url_for('show_favorites')}}" class="favBtn">&#9829;</a>
         </div>
         <h1>Recipes</h1>

@@ -7,3 +7,4 @@ function closeNav () {
     document.getElementById("sideMenu").style.width = "0px"
     
 }
+
